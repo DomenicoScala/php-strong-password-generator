@@ -1,15 +1,4 @@
-<?php     
-    
-    require __DIR__.'/function.php';
-    
-    
-    $password= '';
-    if(isset($_GET['length'])){
-        $passLength = intval($_GET['length']);
 
-        $password = generateRandomPassword($_GET['length']);
-    }
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +33,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <form class="row" action="" method="GET">
+                        <form class="row" action="generate-password.php" method="GET">
                             <div class="mb-3">
                                 <label for="inputPassword2" class="visually-hidden">
                                     Lunghezza Password
@@ -64,25 +53,6 @@
                         </form>
                     </div>
                 </div>
-
-                <?php
-                    if(strlen($password)> 0){
-                ?>
-                    <div class="row">   
-                        <div class="col">
-                            <h2>
-                                LA PASSWORD GENERATA E':
-                                <strong>
-                                    <?php 
-                                        echo $password
-                                    ?>
-                                </strong>
-                            </h2>
-                        </div>
-                    </div>
-                <?php
-                    }
-                ?>    
             </div>
         </main>
 
