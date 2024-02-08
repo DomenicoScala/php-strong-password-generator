@@ -1,31 +1,15 @@
 <?php     
+    
+    require __DIR__.'/function.php';
+    
+    
     $password= '';
     if(isset($_GET['length'])){
         $passLength = intval($_GET['length']);
 
-        if($passLength >= 3 && $passLength <= 18){
-            $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!$%&()=?_-[]';
-            $min= 0;
-            $max= strlen($characters) - 1;
-
-
-            
-            for($i = 0; $i < $passLength; $i++){
-                $randomCharacter = $characters[mt_rand($min,$max)];
-
-                $password .= $randomCharacter;
-            };         
-        };
+        $password = generateRandomPassword($_GET['length']);
     }
 ?>
-
-
-
-
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -81,18 +65,24 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col">
-                        <h2>
-                            LA PASSWORD GENERATA E':
-                            <strong>
-                                <?php 
-                                    echo $password
-                                ?>
-                            </strong>
-                        </h2>
+                <?php
+                    if(strlen($password)> 0){
+                ?>
+                    <div class="row">   
+                        <div class="col">
+                            <h2>
+                                LA PASSWORD GENERATA E':
+                                <strong>
+                                    <?php 
+                                        echo $password
+                                    ?>
+                                </strong>
+                            </h2>
+                        </div>
                     </div>
-                </div>
+                <?php
+                    }
+                ?>    
             </div>
         </main>
 
